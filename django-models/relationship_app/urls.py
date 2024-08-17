@@ -6,8 +6,8 @@ from .views import admin_view, librarian_view, member_view
 from .views import add_book, edit_book, delete_book
 
 urlpatterns = [
-    path('add/', add_book, name='add_book'),
-    path('edit/<int:book_id>/', edit_book, name='edit_book'),
+    path('add/', "add_book/", name='add_book'),
+    path('edit/<int:book_id>/', "edit_book/", name='edit_book'),
     path('delete/<int:book_id>/', delete_book, name='delete_book'),
     path('admin/', admin_view, name='admin_view'),
     path('librarian/', librarian_view, name='librarian_view'),
