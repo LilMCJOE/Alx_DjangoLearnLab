@@ -7,7 +7,7 @@ from .models import Book, Library
 
 def list_books(request):
     books = Book.objects.all()
-    return render(request, '/Users/macbook/ALX_Projects/Alx_DjangoLearnLab/django-models/relationship_app/templates/relationship_app/library_detail.html', {'books': books})
+    return render(request, 'relationship_app/list_books.html', {'books': books})
 
 class LibraryDetailView(DetailView):
     model = Library
