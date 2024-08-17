@@ -3,7 +3,8 @@
 # Create your views here.
 from django.views.generic.detail import DetailView
 from django.shortcuts import render
-from .models import Book, Library
+from .models import Book
+from .models import Library
 
 def list_books(request):
     books = Book.objects.all()
