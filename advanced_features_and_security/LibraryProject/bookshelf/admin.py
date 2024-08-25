@@ -3,9 +3,10 @@ from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
 from .models import Book
 from django.conf import settings
+from django.db import models
 
-class SomeModel(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+# class SomeModel(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     fieldsets = UserAdmin.fieldsets + (
