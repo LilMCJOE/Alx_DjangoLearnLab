@@ -23,10 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+yjr%y6%_bsmjghca5vbrca^y=&shpcxzyaigagin(@8v4*xtf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
+SECURE_BROWSER_XSS_FILTER = True  # Enables the X-XSS-Protection header
+X_FRAME_OPTIONS = 'DENY'  # Prevents the site from being embedded in iframes
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents the browser from guessing the MIME type
+
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
@@ -37,9 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookshelf'
-    
+    'bookshelf',
+    'csp',   
 ]
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", "https://trusted.cdn.com")
+CSP_IMG_SRC = ("'self'", "https://trusted.images.com")
+
+
 
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
