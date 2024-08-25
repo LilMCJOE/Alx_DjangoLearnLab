@@ -3,7 +3,7 @@ from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import Book
 from django.utils.decorators import decorator_from_middleware
-
+from .forms import ExampleForm
 
 
 @login_required
