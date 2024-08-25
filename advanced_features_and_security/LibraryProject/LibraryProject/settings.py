@@ -35,6 +35,20 @@ SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents the browser from guessing the MIM
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
+# Redirect all HTTP traffic to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # Set to 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Apply HSTS to all subdomains
+SECURE_HSTS_PRELOAD = True  # Allow the site to be preloaded by browsers
+
+# Security headers
+X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking by disallowing framing
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent browsers from MIME-sniffing
+SECURE_BROWSER_XSS_FILTER = True  # Enable the browser's XSS filtering
+
+
 # Application definition
 
 INSTALLED_APPS = [
