@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 SECURE_BROWSER_XSS_FILTER = True  # Enables the X-XSS-Protection header
 X_FRAME_OPTIONS = 'DENY'  # Prevents the site from being embedded in iframes
 SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents the browser from guessing the MIME type
-
+SECURE_PROXY_SSL_HEADER", "HTTP_X_FORWARDED_PROTO
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
