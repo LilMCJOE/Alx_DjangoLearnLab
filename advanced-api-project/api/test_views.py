@@ -53,7 +53,7 @@ class BookAPITestCase(APITestCase):
 
     def test_order_books(self):
         url = reverse('book-list') + '?ordering=publication_year'
-        response = self.client.get(url)
+        response = self.client.login(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data[0]['title'], 'Test Book 1')
         self.assertEqual(response.data[1]['title'], 'Test Book 2')
