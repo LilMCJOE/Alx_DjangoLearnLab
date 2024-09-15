@@ -129,3 +129,78 @@ You are logged in.
 You are the author of the post you are trying to edit or delete.
 Unauthorized users trying to access restricted views will be redirected to the login page or shown a "403 Forbidden" error, depending on the action they are trying to perform.
 
+Comment Functionality Documentation
+Overview
+The comment system in the Django blog allows users to engage with blog posts by adding, editing, and deleting comments. This document outlines how to use these features and explains the permissions associated with comment operations.
+
+Adding Comments
+Feature: Authenticated users can add comments to blog posts.
+
+Steps:
+
+Navigate to a Blog Post Detail Page: Go to the page displaying the blog post to which you want to add a comment.
+
+Locate the Comment Form: Scroll to the section labeled "Add a Comment" on the blog post detail page.
+
+Fill Out the Comment Form:
+
+Enter your comment in the text area provided.
+Click the "Post Comment" button to submit your comment.
+Success Confirmation: After submitting, the page will refresh and display your new comment below the blog post.
+
+Editing Comments
+Feature: Users can edit their own comments.
+
+Steps:
+
+Navigate to the Blog Post Detail Page: Locate the blog post containing the comment you wish to edit.
+
+Find Your Comment: Locate the comment you want to edit. Only comments authored by the logged-in user will show the "Edit" option.
+
+Click "Edit": This will take you to a form pre-filled with the current content of the comment.
+
+Modify the Comment:
+
+Update the text in the comment form.
+Click the "Save" button to submit the changes.
+Success Confirmation: The page will refresh and display the updated comment.
+
+Deleting Comments
+Feature: Users can delete their own comments.
+
+Steps:
+
+Navigate to the Blog Post Detail Page: Find the blog post with the comment you wish to delete.
+
+Locate Your Comment: Find the comment you want to delete. The "Delete" option will be available only for comments authored by the logged-in user.
+
+Click "Delete": You will be prompted to confirm the deletion.
+
+Confirm Deletion:
+
+Click the "Delete" button on the confirmation page.
+The comment will be removed from the blog post.
+Success Confirmation: The page will refresh, and the comment will no longer be visible.
+
+Permissions Handling
+Comment Permissions:
+
+Adding Comments: Any authenticated user can add comments to blog posts.
+
+Editing Comments: Only the author of a comment can edit it. This is enforced by checking if the logged-in user is the same as the comment's author.
+
+Deleting Comments: Only the author of a comment can delete it. This is similarly enforced by verifying that the logged-in user matches the comment's author.
+
+Technical Implementation:
+
+Views:
+
+CommentCreateView handles the creation of comments and requires the user to be authenticated.
+CommentUpdateView allows editing of comments and uses UserPassesTestMixin to ensure that only the comment’s author can access it.
+CommentDeleteView permits deletion of comments and also uses UserPassesTestMixin for authorization.
+Templates:
+
+The comment form is included in the blog post detail template, showing the form for adding comments and links for editing and deleting existing comments.
+Forms:
+
+CommentForm is used for both creating and editing comments, ensuring that only valid content is submitted.
