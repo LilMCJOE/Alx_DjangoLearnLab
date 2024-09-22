@@ -47,7 +47,7 @@ def user_feed(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def like_post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = generics.get_object_or_404(Post, pk=pk)
     like, created = Like.objects.get_or_create(user=request.user, post=post)
 
     if created:
@@ -64,8 +64,7 @@ def like_post(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def unlike_post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    try:
+    post = generics.get_object_or_404(Post, pk=pk)
         like = Like.objects.get(user=request.user, post=post)
         like.delete()
         return Response({'detail': 'Post unliked successfully'}, status=204)
