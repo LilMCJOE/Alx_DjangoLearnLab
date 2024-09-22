@@ -82,8 +82,9 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 class FollowUserView(generics.GenericAPIView):
-    permission_classes = [IsAuthenticated]
+    
     queryset = CustomUser.objects.all()
+    permissions.IsAuthenticated
     def post(self, request, user_id):
         user_to_follow = get_object_or_404(CustomUser, id=user_id)
         if request.user == user_to_follow:
@@ -96,7 +97,8 @@ class FollowUserView(generics.GenericAPIView):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 class UnfollowUserView(generics.GenericAPIView):
-    permission_classes = [IsAuthenticated]
+
+    permissions.IsAuthenticated
 
     def post(self, request, user_id):
         user_to_unfollow = get_object_or_404(CustomUser, id=user_id)
