@@ -15,6 +15,8 @@ from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404
 from .models import CustomUser
 from posts.models import Post
+from rest_framework import permissions
+
 
 # from .models import Post, Comment
 # from .serializers import PostSerializer, CommentSerializer
@@ -84,7 +86,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 class FollowUserView(generics.GenericAPIView):
     
     queryset = CustomUser.objects.all()
-    permissions.IsAuthenticated
+    permission_classes = [permissions.IsAuthenticated]
     def post(self, request, user_id):
         user_to_follow = get_object_or_404(CustomUser, id=user_id)
         if request.user == user_to_follow:
@@ -98,7 +100,7 @@ class FollowUserView(generics.GenericAPIView):
 @permission_classes([IsAuthenticated])
 class UnfollowUserView(generics.GenericAPIView):
 
-    permissions.IsAuthenticated
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
         user_to_unfollow = get_object_or_404(CustomUser, id=user_id)

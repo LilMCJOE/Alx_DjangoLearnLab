@@ -55,3 +55,27 @@ Body: No body required.
 Response:
 
 Status 200 OK: Returns the list of posts from followed users.
+
+Liking and Unliking Posts
+1. Like a Post
+Endpoint: POST /posts/<post_id>/like/
+
+Description: Allows an authenticated user to like a specific post.
+
+Method: POST
+
+URL: /posts/<post_id>/like/
+
+Authentication: Requires Bearer Token in the header.
+
+Request Parameters:
+
+post_id: The ID of the post to like.
+Request Headers:
+
+Authorization: Bearer <your_token>
+Response:
+
+200 OK: Like successfully registered.
+404 Not Found: Post with the specified ID not found.
+400 Bad Request: User has already liked the post.
